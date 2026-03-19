@@ -1,14 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "study_docker/http_server"
 
 func main() {
-	for i := 1; i <= 5; i++ {
-		fmt.Println("Hello from Docker!")
-
-		time.Sleep(time.Second * 1)
+	if err := http_server.StartHTTPServer(); err != nil {
+		panic(err)
 	}
 }
