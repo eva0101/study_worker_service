@@ -11,7 +11,7 @@ import (
 func StartHTTPServer() error {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/employees", handlers.AddEmployeHandler).Methods("POST")
+	router.HandleFunc("/employees", handlers.AddEmployeeHandler).Methods("POST")
 	router.HandleFunc("/employees", handlers.GetListEmployeesHandler).Methods("GET")
 	router.HandleFunc("/employees", handlers.DeleteEmployeHandler).Methods("DELETE")
 

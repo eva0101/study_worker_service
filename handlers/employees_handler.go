@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"study_docker/employees"
+	"study_docker/employee"
 )
 
-var dbEmpoyees = &employees.ListEmployees{}
+var dbEmpoyees = &employee.ListEmployees{}
 
-func AddEmployeHandler(w http.ResponseWriter, r *http.Request) {
+func AddEmployeeHandler(w http.ResponseWriter, r *http.Request) {
 	httpBody, err := io.ReadAll(r.Body)
 	if err != nil {
 		fmt.Println("err read body:", err)
@@ -18,7 +18,7 @@ func AddEmployeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var employe employees.Employe
+	var employe employee.Employee
 	if err = json.Unmarshal(httpBody, &employe); err != nil {
 		fmt.Println("err unmarshal json:", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -51,7 +51,7 @@ func DeleteEmployeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var id employees.Num
+	var id employee.Num
 	if err = json.Unmarshal(httpBody, &id); err != nil {
 		fmt.Println("err unmarshal json:", err)
 		w.WriteHeader(http.StatusInternalServerError)

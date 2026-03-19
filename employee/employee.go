@@ -1,11 +1,11 @@
-package employees
+package employee
 
 import (
 	"errors"
 	"sync"
 )
 
-type Employe struct {
+type Employee struct {
 	ID       int    `json:"id"`
 	FullName string `json:"fullName"`
 	Position string `json:"position"`
@@ -16,12 +16,12 @@ type Num struct {
 }
 
 type ListEmployees struct {
-	list   []Employe
+	list   []Employee
 	mu     sync.Mutex
 	IDnext int
 }
 
-func (l *ListEmployees) Add(e Employe) {
+func (l *ListEmployees) Add(e Employee) {
 	l.mu.Lock()
 	defer l.mu.Unlock()
 
@@ -31,7 +31,7 @@ func (l *ListEmployees) Add(e Employe) {
 	l.list = append(l.list, e)
 }
 
-func (l *ListEmployees) Get() []Employe {
+func (l *ListEmployees) Get() []Employee {
 	l.mu.Lock()
 	defer l.mu.Unlock()
 
