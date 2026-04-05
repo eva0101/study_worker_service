@@ -1,0 +1,14 @@
+services:
+  db: 
+    image: postgres:18.3-bookworm
+    container_name: postgres-container
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./out/pgdata:/var/lib/postgresql
+  
+  app:
+    build: .
+    container_name: go-app-container
+    ports:
+      - "5070:5050"

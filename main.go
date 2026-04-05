@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"time"
+	"study_docker/http_server"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	for i := 1; i <= 5; i++ {
-		fmt.Println("Hello from Docker!")
+	godotenv.Load()
 
-		time.Sleep(time.Second * 1)
+	if err := http_server.StartHTTPServer(); err != nil {
+		panic(err)
 	}
 }
