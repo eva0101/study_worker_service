@@ -1,14 +1,14 @@
 include .env
 export
 
-service-run:
-	@go run main.go
+compose-up:
+	docker compose up -d --build
 
-run-http-app:
-	docker run -p 5050:5050 employees
+compose-down:
+	docker compose down
 
 migrate-up:
-	@migrate -path migrations -database ${CONN_STRING} up
+	@migrate -path migrations -database ${CONN_LOCAL} up
 
 migrate-down:
-	@migrate -path migrations -database ${CONN_STRING} down
+	@migrate -path migrations -database ${CONN_LOCAL} down	

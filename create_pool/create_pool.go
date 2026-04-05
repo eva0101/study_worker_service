@@ -8,7 +8,7 @@ import (
 )
 
 func CreatePool() *pgxpool.Pool {
-	connStr := os.Getenv("CONN_STRING")
+	connStr := os.Getenv("CONN_DB")
 
 	pool, err := pgxpool.New(context.Background(), connStr)
 	if err != nil {
